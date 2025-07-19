@@ -77,9 +77,8 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-gray-200 mt-6 pt-4 text-center text-gray-500">
-            copyright © Vishwa Bharati Shiksha Sadan. All rights reserved. Hosting by IDCloudHost.
+            copyright 2025 © Vishwa Bharati Shiksha Sadan. All rights reserved. Hosting by IDCloudHost.
           </div>
-
         </div>
       </footer>
   );
