@@ -11,7 +11,7 @@ export default function Header() {
             alt="Logo"
             className="w-10 h-8 object-contain"
           />
-          <h1 className="text-xl font-bold">Vishwa Bharati</h1>
+          <h1 className="text-xl font-bold">Vishwa Bharati Shiksha Sadan</h1>
         </div>
         
         <ul className="flex gap-4">
