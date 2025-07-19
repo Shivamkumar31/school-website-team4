@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -7,14 +8,13 @@ export default function Footer() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 
-            {/* Combined Logo and Contact Details */}
             <div>
-              <div className="flex items-center mb-4"> {/* Flex container for logo and title */}
+              <div className="flex items-center mb-4">
                 <img
                     src="https://tse4.mm.bing.net/th/id/OIP.dYYZuUl1R4RwUTtFMrCitgAAAA?pid=Api&P=0&h=180"
                     width="50"
                     alt="logo"
-                    className="mr-2" // Added margin right for spacing
+                    className="mr-2"
                 />
                 <h6 className="font-semibold text-base">Vishwa Bharati Shiksha Sadan</h6> {/* School name as title */}
               </div>
@@ -31,7 +31,9 @@ export default function Footer() {
             <div>
               <h6 className="font-semibold mb-2">Explore</h6>
               <ul className="space-y-1">
-                <li>Welcome</li>
+                <Link to={'/'}>
+                  <li>Welcome</li>
+                </Link>
                 <li>School Profile</li>
                 <li>News</li>
                 <li>Gallery</li>
