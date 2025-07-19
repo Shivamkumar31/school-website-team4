@@ -1,12 +1,13 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';  // ✅ Import Link
 
 export default function Footer() {
   return (
     <footer className="bg-white mt-12 pt-8 text-gray-700 text-sm">
       <div className="max-w-7xl mx-auto px-4">
-
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-
+          {/* Logo and Address */}
           <div>
             <img
               src="https://tse4.mm.bing.net/th/id/OIP.dYYZuUl1R4RwUTtFMrCitgAAAA?pid=Api&P=0&h=180"
@@ -20,27 +21,30 @@ export default function Footer() {
             </a>
           </div>
 
+          {/* Explore Section */}
           <div>
             <h6 className="font-semibold mb-2">Explore</h6>
             <ul className="space-y-1">
-              <li>Welcome</li>
-              <li>School Profile</li>
-              <li>News</li>
-              <li>Gallery</li>
+              <li><Link to="/welcome" className="hover:underline">Welcome</Link></li>
+              <li><Link to="/school-profile" className="hover:underline">School Profile</Link></li>
+              <li><Link to="/news" className="hover:underline">News</Link></li>
+              <li><Link to="/gallery" className="hover:underline">Gallery</Link></li>
             </ul>
           </div>
 
+          {/* General Pages */}
           <div>
             <h6 className="font-semibold mb-2">General Pages</h6>
             <ul className="space-y-1">
-              <li>Teacher Data</li>
-              <li>New Student Admission</li>
-              <li>Guide</li>
-              <li>Location</li>
-              <li>Contact</li>
+              <li><Link to="/teacher-data" className="hover:underline">Teacher Data</Link></li>
+              <li><Link to="/new-admission" className="hover:underline">New Student Admission</Link></li>
+              <li><Link to="/guide" className="hover:underline">Guide</Link></li>
+              <li><Link to="/location" className="hover:underline">Location</Link></li>
+              <li><Link to="/contact" className="hover:underline">Contact</Link></li>
             </ul>
           </div>
 
+          {/* Social Media Icons */}
           <div>
             <h6 className="font-semibold mb-2">Social Media</h6>
             <div className="flex space-x-4">
@@ -58,7 +62,9 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Instagram */}
+
+
+       {/* Instagram */}
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg className="w-6 h-6 text-pink-500 hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.6.5.3.9.7 1.2 1.2.3.5.5 1.2.6 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.6 2.4-.3.5-.7.9-1.2 1.2-.5.3-1.2.5-2.4.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.6-.5-.3-.9-.7-1.2-1.2-.3-.5-.5-1.2-.6-2.4-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.9.6-2.4.3-.5.7-.9 1.2-1.2.5-.3 1.2-.5 2.4-.6C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7 .1 5.5.2 4.4.5 3.6 1 .8 1.9 0 3.5 0 7c0 1.3 0 1.7.1 5s.1 3.6.1 5c0 3.5.8 5.1 3.6 6 1 .4 2.2.7 3.6.8 1.3.1 1.7.1 5 .1s3.6 0 5-.1c1.4-.1 2.6-.4 3.6-.8 2.8-.9 3.6-2.5 3.6-6 0-1.3 0-1.7-.1-5s-.1-3.6-.1-5c0-3.5-.8-5.1-3.6-6-1-.4-2.2-.7-3.6-.8C15.7 0 15.3 0 12 0zM12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.6c0 .8-.6 1.4-1.4 1.4S15.6 5.2 15.6 4.4 16.2 3 17 3s1.4.6 1.4 1.4z"/>
@@ -68,12 +74,12 @@ export default function Footer() {
           </div>
         </div>
 
-       
+
         <div className="border-t border-gray-200 mt-6 pt-4 text-center text-gray-500">
           copyright © Vishwa Bharati Shiksha Sadan. All rights reserved. Hosting by IDCloudHost.
         </div>
-
       </div>
     </footer>
   );
 }
+
