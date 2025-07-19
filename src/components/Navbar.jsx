@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <header className="bg-blue-700 text-white p-4">
+    <header className="text-white p-4" style={{ background: '#101524' }}>
       <nav className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           {/* Logo */}

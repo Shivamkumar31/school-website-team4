@@ -1,28 +1,31 @@
 // src/pages/Home.jsx
 import Button from '../components/Button';
-import bannerImage from '../assets/bannerImage.jpg'; // Make sure file exists
-import principalImage from '../assets/principal-group.jpg';
+import bannerImage from '../assets/bannerImage.png'; // Make sure file exists
+import principalImage from '../assets/principal-group.png';
 
 export default function Home() {
   return (
-    <div className="font-sans">
+    <div className="font-sans mt-0">
 
       {/* ✅ Banner Section with <img> for reliability */}
-      <section className="relative h-[300px] w-full overflow-hidden">
-        <img
-          src={bannerImage}
-          alt="Banner"
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-blue bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-2">
-            Pemberitahuan PPDB 2020/2021
-          </h2>
-          <p className="text-sm md:text-base max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </div>
-      </section>
+      <section className="relative w-full m-0 p-0">
+  <img
+    src={bannerImage}
+    alt="Banner"
+    className="w-full h-auto object-contain block"
+  />
+  <div className="absolute top-0 left-0 w-full h-full bg-blue bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
+    <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+      Pemberitahuan PPDB 2020/2021
+    </h2>
+    <p className="text-sm md:text-base max-w-xl">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+  </div>
+</section>
+
+
+
 
       {/* Agenda Info */}
       <section className="bg-white py-10">
