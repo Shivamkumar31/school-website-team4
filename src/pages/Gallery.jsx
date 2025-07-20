@@ -53,7 +53,7 @@ export default function Gallery() {
       <div className="relative w-full h-60 bg-cover bg-center bg-[url('https://images.pexels.com/photos/159775/library-la-trobe-study-students-159775.jpeg')]">
         <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-white">
           <h2 className="text-3xl font-bold">Gallery SMP Negeri 1 Cibadak</h2>
-          <p className="text-sm mt-2">Beberapa Foto - Foto di SMP Negeri 1 Cibadak</p>
+          <p className="text-sm mt-2">Some Photos at SMP Negeri 1 Cibadak</p>
         </div>
       </div>
 

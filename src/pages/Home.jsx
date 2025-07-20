@@ -47,7 +47,7 @@ export default function Home() {
         />
         <div className="absolute top-0 left-0 w-full h-full bg-white-900 bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
            <h2 className="text-2xl md:text-3xl font-semibold mb-2">
-            Welcome to Vishwa Bharati School
+            Welcome to Vishwa Bharati Shiksha Sadan
           </h2>
           <p className="text-sm md:text-base max-w-xl">
             A place of excellence in education, discipline, and development for every student.
@@ -112,7 +112,7 @@ export default function Home() {
 
             <button
               onClick={() => setShowFull(!showFull)}
-              className="mt-4 px-4 py-2 bg-white text-sky-700 border border-sky-700 rounded hover:bg-sky-100 transition"
+              className="cursor-pointer mt-4 px-4 py-2 bg-white text-sky-700 border border-sky-700 rounded hover:bg-sky-100 transition"
             >
               {showFull ? 'Show Less' : 'Show More'}
             </button>
