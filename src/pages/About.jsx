@@ -5,7 +5,7 @@ const About = () => {
    <div className="font-sans mt-0">
    
          {/* ✅ Banner Section */}
-         <section className="relative w-full m-0 p-0 overflow-hidden">
+         <section className="relative w-full m-0 p-0 overflow-hidden ">
            <img
              src={bannerImage}
              alt="Banner"
