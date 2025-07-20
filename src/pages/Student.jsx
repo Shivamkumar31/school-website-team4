@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ExamSchedule from '../components/ExamSchedule';
 import Announcements from '../components/Announcements';
 import StudyMaterial from '../components/StudyMaterial';
@@ -7,13 +7,12 @@ import ClassChat from '../components/ClassChat';
 import PerformanceTracking from '../components/PerformanceTracking';
 import { FaBook, FaBullhorn, FaCalendarAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const Section = ({ title, icon, children, defaultOpen = false }) => {
-  const [open, setOpen] = useState(defaultOpen);
+const Section = ({ title, icon, children, open, setOpen }) => {
   return (
     <div className="mb-8 bg-white/90 rounded-2xl shadow-lg p-6 border border-blue-100 transition-all duration-300 hover:shadow-2xl">
       <button
         className="flex items-center w-full text-left text-blue-800 font-bold text-xl mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg transition-all duration-200"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => setOpen((prev) => !prev)}
       >
         <span className="mr-3 text-2xl">{icon}</span>
         {title}
@@ -43,6 +42,27 @@ const QuickLinks = () => (
 
 const Student = () => {
   const [classLevel, setClassLevel] = useState(5);
+  const [openSection, setOpenSection] = useState('announcements');
+  const announcementsRef = useRef(null);
+  const examScheduleRef = useRef(null);
+  const studyMaterialRef = useRef(null);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setOpenSection(hash);
+        setTimeout(() => {
+          if (hash === 'announcements' && announcementsRef.current) announcementsRef.current.scrollIntoView({ behavior: 'smooth' });
+          if (hash === 'exam-schedule' && examScheduleRef.current) examScheduleRef.current.scrollIntoView({ behavior: 'smooth' });
+          if (hash === 'study-material' && studyMaterialRef.current) studyMaterialRef.current.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen rounded-xl shadow-lg">
@@ -62,18 +82,33 @@ const Student = () => {
         </select>
       </div>
       <QuickLinks />
-      <Section title="Announcements" icon={<FaBullhorn />} defaultOpen={true}>
-        <div id="announcements">
+      <Section
+        title="Announcements"
+        icon={<FaBullhorn />}
+        open={openSection === 'announcements'}
+        setOpen={() => setOpenSection(openSection === 'announcements' ? '' : 'announcements')}
+      >
+        <div id="announcements" ref={announcementsRef}>
           <Announcements classLevel={classLevel} />
         </div>
       </Section>
-      <Section title="Exam Schedule" icon={<FaCalendarAlt />}>
-        <div id="exam-schedule">
+      <Section
+        title="Exam Schedule"
+        icon={<FaCalendarAlt />}
+        open={openSection === 'exam-schedule'}
+        setOpen={() => setOpenSection(openSection === 'exam-schedule' ? '' : 'exam-schedule')}
+      >
+        <div id="exam-schedule" ref={examScheduleRef}>
           <ExamSchedule classLevel={classLevel} />
         </div>
       </Section>
-      <Section title="Study Material" icon={<FaBook />}>
-        <div id="study-material">
+      <Section
+        title="Study Material"
+        icon={<FaBook />}
+        open={openSection === 'study-material'}
+        setOpen={() => setOpenSection(openSection === 'study-material' ? '' : 'study-material')}
+      >
+        <div id="study-material" ref={studyMaterialRef}>
           <StudyMaterial classLevel={classLevel} />
         </div>
       </Section>
