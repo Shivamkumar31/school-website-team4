@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import bannerImage from "../assets/bannerImage.webp";
 import bannerImage2 from "../assets/bannerImage2.avif";
-import Gallery from "../pages/Gallery";
+import { HorizontalGallery } from "../pages/Gallery";
 import PrincipalMessage from "../components/PrincipalMessage";
 
 import InfoCard from "../components/InfoCard";
@@ -86,7 +86,7 @@ export default function Home() {
           <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center mb-6 sm:mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             School Gallery
           </h3>
-          <Gallery />
+          <HorizontalGallery />
         </div>
       </section>
     </div>

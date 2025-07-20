@@ -66,6 +66,7 @@ export default function Header() {
             {[
               { to: "/", label: "Home" },
               { to: "/about", label: "About" },
+              { to: "/gallery", label: "Gallery" },
               { to: "/student", label: "Student" },
               { to: "/registration", label: "Register" },
               { to: "/contact", label: "Contact" },
@@ -142,6 +143,7 @@ export default function Header() {
                 {[
                   { to: "/", label: "Home" },
                   { to: "/about", label: "About" },
+                  { to: "/gallery", label: "Gallery" },
                   { to: "/student", label: "Student" },
                   { to: "/registration", label: "Register" },
                   { to: "/contact", label: "Contact" },

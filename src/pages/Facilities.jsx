@@ -50,7 +50,7 @@ export default function Facilities() {
               alt={facility.name}
               className="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+            <div className="absolute inset-0 bg-opacity-40 flex items-end">
               <h3 className="text-white text-xl font-bold p-4">
                 {facility.name}
               </h3>

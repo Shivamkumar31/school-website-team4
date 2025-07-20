@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -48,7 +48,8 @@ const galleryData = [
   },
 ];
 
-export default function HorizontalGallery() {
+// Component for horizontal gallery (used on home page)
+export function HorizontalGallery() {
   const scrollRef = useRef(null);
 
   // Simplified animation variants for better performance
@@ -77,8 +78,6 @@ export default function HorizontalGallery() {
       },
     },
   };
-
-  // Optional: Sync page state on manual scroll (advanced)
 
   return (
     <motion.div
@@ -172,5 +171,203 @@ export default function HorizontalGallery() {
         </motion.div>
       </div>
     </motion.div>
+  );
+}
+
+// Full Gallery Page Component (default export for /gallery route)
+export default function FullGalleryPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const categories = [
+    "All",
+    "Guru",
+    "Sanlat",
+    "Kunjungan Disdik",
+    "Kunjungan Arrayah",
+    "Perpisahan 2016",
+    "Wisuda Tahfidz",
+    "MPLS 2016",
+    "Fasilitas Sekolah",
+  ];
+
+  const filteredData =
+    selectedCategory === "All"
+      ? galleryData
+      : galleryData.filter((item) => item.title === selectedCategory);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <motion.section
+        className="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-r from-blue-600 to-purple-700 flex items-center justify-center overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg')] bg-cover bg-center opacity-30"></div>
+
+        {/* Hero Content */}
+        <motion.div
+          className="relative z-10 text-center text-white px-4"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">
+            Gallery SMP Negeri 1 Cibadak
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl opacity-90">
+            Some Photos at SMP Negeri 1 Cibadak
+          </p>
+        </motion.div>
+
+        {/* Decorative Elements */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+      </motion.section>
+
+      {/* Category Filter */}
+      <motion.section
+        className="py-8 bg-white shadow-sm"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? "bg-blue-600 text-white shadow-lg transform scale-105"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Gallery Grid */}
+      <motion.section
+        className="py-12 px-4 sm:px-6 lg:px-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            key={selectedCategory} // Re-animate when category changes
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {filteredData.map((item, idx) => (
+              <motion.div
+                key={`${selectedCategory}-${idx}`}
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl overflow-hidden group cursor-pointer transform transition-all duration-300"
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.3 },
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="relative overflow-hidden">
+                  <motion.img
+                    src={item.img}
+                    alt={item.title}
+                    loading="lazy"
+                    className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white text-sm px-3 py-1 rounded-full font-semibold shadow-lg">
+                    {item.title}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                <div className="p-4">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                    {item.desc}
+                  </p>
+                  {item.link ? (
+                    <Link
+                      to={item.link}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200 group"
+                    >
+                      Lihat Foto
+                      <svg
+                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <span className="text-gray-400 text-sm">Lihat Foto</span>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Empty State */}
+          {filteredData.length === 0 && (
+            <motion.div
+              className="text-center py-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-gray-500 text-lg">
+                No photos found in this category.
+              </p>
+            </motion.div>
+          )}
+        </div>
+      </motion.section>
+    </div>
   );
 }
