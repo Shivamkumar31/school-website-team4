@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const galleryData = [
   {
@@ -46,126 +48,129 @@ const galleryData = [
   },
 ];
 
-const ITEMS_PER_PAGE = 3; // Number of images per viewport/page
-
 export default function HorizontalGallery() {
   const scrollRef = useRef(null);
-  const [page, setPage] = useState(0);
-  const pageCount = Math.ceil(galleryData.length / ITEMS_PER_PAGE);
 
-  // Handles left/right button scrolling
-  const scrollByPage = (direction) => {
-    if (!scrollRef.current) return;
-    const container = scrollRef.current;
-    const scrollAmount = container.offsetWidth; // Scroll by full container width
-    container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+  // Simplified animation variants for better performance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-    let newPage = page + direction;
-    if (newPage < 0) newPage = 0;
-    if (newPage >= pageCount) newPage = pageCount - 1;
-    setPage(newPage);
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
   };
 
   // Optional: Sync page state on manual scroll (advanced)
 
   return (
-    <div className="bg-white text-gray-800 py-8">
-      <div className="max-w-5xl mx-auto">
+    <motion.div
+      className="bg-transparent text-gray-800 py-4 sm:py-6 lg:py-8"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         {/* Gallery Section Header */}
-        <h2 className="text-2xl font-bold mb-4">
+        <motion.h2
+          className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-center lg:text-left text-gray-800"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           Gallery SMP Negeri 1 Cibadak
-        </h2>
+        </motion.h2>
 
-        {/* Horizontal Scroll Buttons */}
-        <div className="flex items-center">
-          <button
-            className="p-2 rounded-full bg-gray-200 hover:bg-blue-400 hover:text-white transition disabled:opacity-30"
-            onClick={() => scrollByPage(-1)}
-            disabled={page === 0}
-            aria-label="Scroll Left"
-          >
-            &#8592;
-          </button>
-
-          {/* Horizontal Scrollable Gallery */}
-          <div
-            ref={scrollRef}
-            className="flex space-x-6 overflow-x-auto scrollbar-hide px-4 py-2 snap-x snap-mandatory"
-            style={{
-              scrollBehavior: "smooth",
-              scrollSnapType: "x mandatory",
-              width: "100%",
-            }}
-          >
-            {galleryData.map((item, idx) => (
-              <div
-                key={idx}
-                className="min-w-[250px] max-w-xs bg-white rounded-lg shadow-md snap-center transition-transform duration-300 hover:scale-105 overflow-hidden flex-shrink-0"
-              >
-                <div className="relative">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="absolute top-0 left-0 bg-blue-600 text-white text-sm px-3 py-1 rounded-br-md font-semibold">
-                    {item.title}
-                  </div>
-                </div>
-                <div className="p-3">
-                  <p className="text-sm">{item.desc}</p>
-                  {item.link ? (
-                    <Link
-                      to={item.link}
-                      className="text-blue-600 hover:underline mt-2 block"
-                    >
-                      Lihat Foto
-                    </Link>
-                  ) : (
-                    <span className="text-gray-400 text-sm mt-2 block">
-                      Lihat Foto
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <button
-            className="p-2 rounded-full bg-gray-200 hover:bg-blue-400 hover:text-white transition disabled:opacity-30 ml-2"
-            onClick={() => scrollByPage(1)}
-            disabled={page === pageCount - 1}
-            aria-label="Scroll Right"
-          >
-            &#8594;
-          </button>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center space-x-2 mt-4">
-          {Array.from({ length: pageCount }).map((_, i) => (
-            <button
-              key={i}
-              className={`w-3 h-3 rounded-full transition ${
-                i === page ? "bg-blue-500" : "bg-gray-300"
-              }`}
-              onClick={() => {
-                if (scrollRef.current) {
-                  const container = scrollRef.current;
-                  // Each page is ITEMS_PER_PAGE cards wide
-                  container.scrollTo({
-                    left: i * container.offsetWidth,
-                    behavior: "smooth",
-                  });
-                  setPage(i);
-                }
+        {/* Horizontal Scrollable Gallery */}
+        <motion.div
+          ref={scrollRef}
+          className="flex space-x-3 sm:space-x-4 lg:space-x-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 py-2 snap-x snap-mandatory"
+          style={{
+            scrollBehavior: "smooth",
+            scrollSnapType: "x mandatory",
+            width: "100%",
+          }}
+          variants={containerVariants}
+        >
+          {galleryData.map((item, idx) => (
+            <motion.div
+              key={idx}
+              className="w-[280px] sm:w-[300px] lg:w-[320px] bg-white rounded-xl shadow-lg hover:shadow-xl snap-center overflow-hidden flex-shrink-0 border border-gray-100"
+              variants={cardVariants}
+              whileHover={{
+                scale: 1.02,
+                y: -3,
+                transition: { duration: 0.3 },
               }}
-              aria-label={`Go to page ${i + 1}`}
-            />
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={item.img}
+                  alt={item.title}
+                  loading="lazy"
+                  className="w-full h-32 sm:h-40 lg:h-44 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-br-lg font-semibold shadow-md">
+                  {item.title}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div className="p-3 sm:p-4">
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  {item.desc}
+                </p>
+                {item.link ? (
+                  <Link
+                    to={item.link}
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mt-2 sm:mt-3 text-xs sm:text-sm transition-colors duration-200 group"
+                  >
+                    Lihat Foto
+                    <svg
+                      className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                ) : (
+                  <span className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3 block">
+                    Lihat Foto
+                  </span>
+                )}
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
