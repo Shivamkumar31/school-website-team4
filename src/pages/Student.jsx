@@ -46,6 +46,9 @@ const Student = () => {
   const announcementsRef = useRef(null);
   const examScheduleRef = useRef(null);
   const studyMaterialRef = useRef(null);
+  const assignmentsRef = useRef(null);
+  const classChatRef = useRef(null);
+  const performanceTrackingRef = useRef(null);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -56,6 +59,9 @@ const Student = () => {
           if (hash === 'announcements' && announcementsRef.current) announcementsRef.current.scrollIntoView({ behavior: 'smooth' });
           if (hash === 'exam-schedule' && examScheduleRef.current) examScheduleRef.current.scrollIntoView({ behavior: 'smooth' });
           if (hash === 'study-material' && studyMaterialRef.current) studyMaterialRef.current.scrollIntoView({ behavior: 'smooth' });
+          if (hash === 'assignments' && assignmentsRef.current) assignmentsRef.current.scrollIntoView({ behavior: 'smooth' });
+          if (hash === 'class-chat' && classChatRef.current) classChatRef.current.scrollIntoView({ behavior: 'smooth' });
+          if (hash === 'performance-tracking' && performanceTrackingRef.current) performanceTrackingRef.current.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
     };
@@ -65,7 +71,7 @@ const Student = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen rounded-xl shadow-lg">
+    <div className="max-w-6xl mx-auto p-6 min-h-screen rounded-xl shadow-lg" style={{ background: 'linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%)' }}>
       <h2 className="text-3xl font-extrabold mb-2 text-center text-blue-800">Student Resources</h2>
       <p className="text-center text-gray-600 mb-4">Access all your important information, updates, and materials in one place.</p>
       <div className="flex justify-center mb-8">
@@ -112,18 +118,33 @@ const Student = () => {
           <StudyMaterial classLevel={classLevel} />
         </div>
       </Section>
-      <Section title="Assignments" icon={<FaBook />}>
-        <div id="assignments">
+      <Section
+        title="Assignments"
+        icon={<FaBook />}
+        open={openSection === 'assignments'}
+        setOpen={() => setOpenSection(openSection === 'assignments' ? '' : 'assignments')}
+      >
+        <div id="assignments" ref={assignmentsRef}>
           <Assignments classLevel={classLevel} />
         </div>
       </Section>
-      <Section title="Class Chat" icon={<FaBullhorn />}>
-        <div id="class-chat">
+      <Section
+        title="Class Chat"
+        icon={<FaBullhorn />}
+        open={openSection === 'class-chat'}
+        setOpen={() => setOpenSection(openSection === 'class-chat' ? '' : 'class-chat')}
+      >
+        <div id="class-chat" ref={classChatRef}>
           <ClassChat classLevel={classLevel} />
         </div>
       </Section>
-      <Section title="Performance Tracking" icon={<FaCalendarAlt />}>
-        <div id="performance-tracking">
+      <Section
+        title="Performance Tracking"
+        icon={<FaCalendarAlt />}
+        open={openSection === 'performance-tracking'}
+        setOpen={() => setOpenSection(openSection === 'performance-tracking' ? '' : 'performance-tracking')}
+      >
+        <div id="performance-tracking" ref={performanceTrackingRef}>
           <PerformanceTracking classLevel={classLevel} />
         </div>
       </Section>
