@@ -80,7 +80,7 @@ export default function Home() {
       <section className="bg-gradient-to-br from-white to-gray-100 py-8 sm:py-10 lg:py-12 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-blue-600/5"></div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center mb-6 sm:mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
