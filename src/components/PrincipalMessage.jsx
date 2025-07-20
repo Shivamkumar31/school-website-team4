@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
-import principalImage from '../assets/principal-group.png';
+import principalImage from "../assets/principal-group.png";
 
 export default function PrincipalMessage() {
   const [showFull, setShowFull] = useState(false);
@@ -9,19 +10,25 @@ export default function PrincipalMessage() {
   // Animation variants
   const textVariant = {
     hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const imageVariant = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
-      opacity: 1, scale: 1,
-      transition: { duration: 0.7, delay: 0.3, type: "spring", bounce: 0.3 }
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.7, delay: 0.3, type: "spring", bounce: 0.3 },
     },
     hover: {
-      scale: 1.04, boxShadow: "0px 8px 30px rgba(0,175,255,0.15)",
-      transition: { duration: 0.3 }
-    }
+      scale: 1.04,
+      boxShadow: "0px 8px 30px rgba(0,175,255,0.15)",
+      transition: { duration: 0.3 },
+    },
   };
 
   return (
@@ -35,24 +42,40 @@ export default function PrincipalMessage() {
           viewport={{ once: true, amount: 0.8 }}
           className="md:w-2/3 text-justify text-base leading-relaxed text-gray-800"
         >
-          <h2 className="text-2xl font-bold text-sky-900 mb-4">Principal's Message</h2>
+          <h2 className="text-2xl font-bold text-sky-900 mb-4">
+            Principal's Message
+          </h2>
           <p className="mb-4">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
 
           {showFull ? (
             <>
               <p className="mb-4">
-                We hope this message finds you in good health. In light of the ongoing COVID-19 situation, and as per the decision of the Regent of Sukabumi (No. 421/Kep.444/Disdik/2020), the new student admissions (PPDB) for the 2020/2021 academic year will be held online. This applies to all levels including Kindergarten, Elementary School, and Junior High School.
+                We hope this message finds you in good health. In light of the
+                ongoing COVID-19 situation, and as per the decision of the
+                Regent of Sukabumi (No. 421/Kep.444/Disdik/2020), the new
+                student admissions (PPDB) for the 2020/2021 academic year will
+                be held online. This applies to all levels including
+                Kindergarten, Elementary School, and Junior High School.
               </p>
               <p className="mb-4">
-                We would like to inform you that the PPDB for SMP Negeri 1 Cibadak will be conducted via our official website:
-                <a href="http://smpn1cibadak.sch.id/ppdb/" className="text-blue-800 underline ml-1" target="_blank" rel="noopener noreferrer">
+                We would like to inform you that the PPDB for SMP Negeri 1
+                Cibadak will be conducted via our official website:
+                <a
+                  href="http://smpn1cibadak.sch.id/ppdb/"
+                  className="text-blue-800 underline ml-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   smpn1cibadak.sch.id/ppdb
-                </a>, and will follow the schedule attached in the official announcement.
+                </a>
+                , and will follow the schedule attached in the official
+                announcement.
               </p>
             </>
           ) : (
             <p className="mb-4">
-              We hope this message finds you in good health. In light of the ongoing COVID-19 situation...
+              We hope this message finds you in good health. In light of the
+              ongoing COVID-19 situation...
             </p>
           )}
 
@@ -60,7 +83,7 @@ export default function PrincipalMessage() {
             onClick={() => setShowFull(!showFull)}
             className="mt-4 px-4 py-2 bg-white text-sky-700 border border-sky-700 rounded hover:bg-sky-100 transition"
           >
-            {showFull ? 'Show Less' : 'Show More'}
+            {showFull ? "Show Less" : "Show More"}
           </button>
         </motion.div>
 
@@ -76,6 +99,7 @@ export default function PrincipalMessage() {
           <img
             src={principalImage}
             alt="Principal and Staff"
+            loading="lazy"
             className="rounded-md shadow-lg w-full object-cover"
           />
           <p className="text-sm mt-2 text-gray-700">Staff of SMPN 1 Cibadak</p>
