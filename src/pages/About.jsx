@@ -1,67 +1,45 @@
-
 import React from 'react';
-import { BookOpen, Users, Mail, MapPin, Quote } from 'lucide-react'; // install: npm install lucide-react
-
+import bannerImage from "../assets/bannerImage.png";
 const About = () => {
   return (
-    <div className="bg-gray-100 text-gray-800 px-6 py-12">
-      <div className="max-w-5xl mx-auto space-y-12">
-        
-        {/* Title Section */}
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold text-blue-700 mb-2">About the School</h1>
-          <div className="h-1 w-24 bg-blue-500 mx-auto rounded"></div>
-        </div>
+   <div className="font-sans mt-0">
+   
+         {/* ✅ Banner Section */}
+         <section className="relative w-full m-0 p-0 overflow-hidden ">
+           <img
+             src={bannerImage}
+             alt="Banner"
+             className="w-full h-[310px] object-cover block"
+           />
+           <div className="absolute top-0 left-0 w-full h-full bg-white-900 bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
+             <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+              About Vishwa Bharati School
+             </h2>
+             <p className="text-sm md:text-base max-w-xl">
+               A place of excellence in education, discipline, and development for every student.
+             </p>
+           </div>
+         </section>
 
-        {/* Intro Paragraphs */}
-        <div className="bg-white p-6 rounded-2xl shadow-md space-y-4">
-          <p className="text-lg leading-relaxed">
-            <strong>SMP Negeri 1 Cibadak</strong> is one of the leading educational institutions located in Sukabumi Regency. This school has made significant contributions in the field of education, especially at the Junior High School (SMP) level.
+      {/* About Content */}
+      <div className="max-w-5xl mx-auto px-4 py-10">
+        <h2 className="text-xl font-semibold text-center mb-6">Sejarah SMP Negeri 1 Cibadak Kab. Sukabumi</h2>
+        <div className="space-y-4 text-justify">
+          <p>
+            SMP Negeri 1 Cibadak didirikan pada tahun 1965 berdasarkan Surat Keputusan Menteri P & K Republik Indonesia.
+            Pada mulanya, Sekolah didirikan di daerah kebon pala yang sekarang menjadi Pasar 5 Terminal Cibadak...
           </p>
-
-          <p className="text-lg leading-relaxed">
-            With the spirit of <em>“Bhaya Cintarasa Bhayari Bhakti”</em>, the school emphasizes values like discipline, togetherness, and a passion for learning to shape a high-quality young generation.
+          <p>
+            SMP Negeri 1 Cibadak sebagai bagian dari dunia pendidikan yang berada di Kecamatan Cibadak mempunyai peranan yang sangat penting...
           </p>
-
-          <p className="text-lg leading-relaxed">
-            During the COVID-19 pandemic, SMPN 1 Cibadak remained committed to conducting the student admission process online to ensure the health and safety of all involved.
+          <p>
+            Kemajuan Ilmu Pengetahuan dan Teknologi yang semakin cenderung membuat orang semakin sibuk dalam mempengaruhi urusan duniawi...
           </p>
-        </div>
-
-        {/* Vision and Mission */}
-        <div className="bg-blue-50 p-6 rounded-2xl shadow space-y-4">
-          <div className="flex items-center gap-2 text-blue-600">
-            <BookOpen className="w-6 h-6" />
-            <h2 className="text-2xl font-bold">Vision & Mission</h2>
-          </div>
-          <ul className="list-disc list-inside text-lg space-y-2 pl-2">
-            <li>To produce graduates who are accomplished and noble in character.</li>
-            <li>To develop students' potential to the fullest.</li>
-            <li>To improve the quality of education through effective learning activities.</li>
-            <li>To foster a spirit of nationalism and social awareness.</li>
-          </ul>
-        </div>
-
-        {/* Contact Section */}
-        <div className="bg-white p-6 rounded-2xl shadow space-y-4">
-          <div className="flex items-center gap-2 text-blue-600">
-            <Users className="w-6 h-6" />
-            <h2 className="text-2xl font-bold">Contact Information</h2>
-          </div>
-
-          <p className="text-lg flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-blue-500" />
-            <span><strong>Address:</strong> SMPN 1 Cibadak Building, Sukabumi Regency, West Java</span>
+          <p>
+            SMP Negeri 1 Cibadak, keberadaannya sangat diperlukan oleh masyarakat di lingkungan Kecamatan Cibadak...
           </p>
-
-          <p className="text-lg flex items-center gap-2">
-            <Mail className="w-5 h-5 text-blue-500" />
-            <span><strong>Email:</strong> info@bsbhayari.sch.id</span>
-          </p>
-
-          <p className="text-lg flex items-center gap-2">
-            <Quote className="w-5 h-5 text-blue-500" />
-            <span><strong>Motto:</strong> "Bhaya Cintarasa Bhayari Bhakti (BS104)"</span>
+          <p>
+            Kegiatan Belajar Mengajar yang diselenggarakan keberadaannya sangat membantu masyarakat dalam memenuhi tuntutan pengetahuan...
           </p>
         </div>
       </div>
@@ -70,4 +48,3 @@ const About = () => {
 };
 
 export default About;
-

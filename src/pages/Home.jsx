@@ -1,68 +1,106 @@
-import Button from '../components/Button';
-import bannerImage from '../assets/bannerImage.png';
-import principalImage from '../assets/principal-group.png';
+import { useState } from "react";
+import Button from "../components/Button";
+import bannerImage from "../assets/bannerImage.png";
+import principalImage from "../assets/principal-group.png";
+import Gallery from "../pages/Gallery"; 
 
 export default function Home() {
+  const [showFull, setShowFull] = useState(false);
+
   return (
-      <div className="font-sans mt-0">
+    <div className="font-sans mt-0">
+      {/* Banner Section */}
+      <section className="relative w-full m-0 p-0 overflow-hidden">
+        <img
+          src={bannerImage}
+          alt="Banner"
+          className="w-full h-[310px] object-cover block"
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-white-900 bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
+           <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+            Welcome to Vishwa Bharati School
+          </h2>
+          <p className="text-sm md:text-base max-w-xl">
+            A place of excellence in education, discipline, and development for every student.
+          </p> 
+        </div>
+      </section>
 
-        <section className="relative w-full m-0 p-0">
-          <img
-              src={bannerImage}
-              alt="Banner"
-              className="w-full h-auto object-contain block"
-          />
-          <div className="absolute top-0 left-0 w-full h-full bg-blue bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2">
-              2025 New Student Admission Notification
-            </h2>
-            <p className="text-sm md:text-base max-w-xl">
-              Welcome prospective students and parents! Our admission process for the 2025 academic year is now open. Find all the essential details and application requirements below.
-            </p>
-          </div>
-        </section>
+      {/*  Event Information Section */}
+      <section className="bg-white py-10">
+        <h3 className="text-center text-xl font-bold mb-6">Event Information</h3>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+          <InfoCard title="Start Time" icon="⏰" time="08:00 AM" date="2020-06-29" />
+          <InfoCard title="End Time" icon="🕔" time="05:00 PM" date="2020-07-04" />
+          <InfoCard title="Venue" icon="📍" time="SMPN 1 Cibadak Building" />
+        </div>
+      </section>
 
+      {/*  Principal's Message Section */}
+      <section className="bg-sky-300 py-12">
+        <div className="max-w-6xl mx-auto px-6 md:flex items-start gap-10">
+          {/* Text Section */}
+          <div className="md:w-2/3 text-justify text-base leading-relaxed text-gray-800">
+            <h2 className="text-2xl font-bold text-sky-900 mb-4">Principal's Message</h2>
+            <p className="mb-4">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
 
-        <section className="bg-white py-10">
-          <h3 className="text-center text-xl font-bold mb-6">Agenda Information</h3>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-            <InfoCard title="Start Time" icon="⏰" time="08:00 AM" date="2020-06-29" />
-            <InfoCard title="End Time" icon="🕔" time="05:00 PM" date="2020-07-04" />
-            <InfoCard title="Location" icon="📍" time="SMPN 1 Cibadak Building" />
-          </div>
-        </section>
-
-        <section className="bg-sky-300 py-10">
-          <div className="max-w-6xl mx-auto px-4 md:flex items-start gap-8">
-            <div className="md:w-2/3 text-justify">
-              <p className="mb-4">Peace be upon you, and the mercy of God and His blessings.</p>
+            {showFull ? (
+              <>
+                <p className="mb-4">
+                  We hope this message finds you in good health. In light of the ongoing COVID-19 situation, and as per the decision of the Regent of Sukabumi (No. 421/Kep.444/Disdik/2020), the new student admissions (PPDB) for the 2020/2021 academic year will be held online. This applies to all levels including Kindergarten, Elementary School, and Junior High School.
+                </p>
+                <p className="mb-4">
+                  We would like to inform you that the PPDB for SMP Negeri 1 Cibadak will be conducted via our official website:
+                  <a href="http://smpn1cibadak.sch.id/ppdb/" className="text-blue-800 underline ml-1" target="_blank" rel="noopener noreferrer">
+                    smpn1cibadak.sch.id/ppdb
+                  </a>, and will follow the schedule attached in the official announcement.
+                </p>
+              </>
+            ) : (
               <p className="mb-4">
-                Respectfully informed, amidst the ongoing spread of Covid-19...
-                <br />Furthermore, following up on the Decree of the Regent of Sukabumi...
+                We hope this message finds you in good health. In light of the ongoing COVID-19 situation...
               </p>
-              <p className="mb-4">
-                Therefore, we need to convey that the 2020/2021 New Student Admission...
-              </p>
-              <Button>View More Information</Button>
-            </div>
-            <div className="md:w-1/3 mt-8 md:mt-0">
-              <img src={principalImage} alt="SMPN 1 Cibadak Employees" className="rounded-md shadow-md" />
-              <p className="text-center text-sm mt-2">SMPN 1 Cibadak Employees</p>
-            </div>
-          </div>
-        </section>
+            )}
 
-      </div>
+            <button
+              onClick={() => setShowFull(!showFull)}
+              className="mt-4 px-4 py-2 bg-white text-sky-700 border border-sky-700 rounded hover:bg-sky-100 transition"
+            >
+              {showFull ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+
+          {/* Image Section */}
+          <div className="md:w-1/3 mt-8 md:mt-0 text-center">
+            <img
+              src={principalImage}
+              alt="Principal and Staff"
+              className="rounded-md shadow-lg w-full object-cover"
+            />
+            <p className="text-sm mt-2 text-gray-700">Staff of SMPN 1 Cibadak</p>
+          </div>
+        </div>
+      </section>
+
+      {/*  Gallery Section */}
+      <section className="bg-white py-10">
+        <div className="max-w-6xl mx-auto px-4">
+          <h3 className="text-xl font-bold text-center mb-6">School Gallery</h3>
+          <Gallery />
+        </div>
+      </section>
+    </div>
   );
 }
 
+//  Reusable InfoCard Component
 function InfoCard({ title, icon, time, date }) {
   return (
-      <div className="border rounded-lg shadow-md p-4 text-center bg-white">
-        <div className="text-3xl mb-2">{icon}</div>
-        <h4 className="font-semibold">{title}</h4>
-        {time && <p className="text-sm">{time}</p>}
-        {date && <p className="text-sm text-gray-600">{date}</p>}
-      </div>
+    <div className="border rounded-lg shadow-md p-4 text-center bg-white">
+      <div className="text-3xl mb-2">{icon}</div>
+      <h4 className="font-semibold">{title}</h4>
+      {time && <p className="text-sm">{time}</p>}
+      {date && <p className="text-sm text-gray-600">{date}</p>}
+    </div>
   );
 }
