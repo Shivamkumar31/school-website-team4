@@ -7,7 +7,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
               <img
-                  src="https://tse4.mm.bing.net/th/id/OIP.dYYZuUl1R4RwUTtFMrCitgAAAA?pid=Api&P=0&h=180"
+                  src="src/assets/vbss-logo.png"
                   alt="Logo"
                   className="w-10 h-8 object-contain"
               />
@@ -19,7 +19,7 @@ export default function Header() {
             <li><Link to="/" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">Home</Link></li>
             <li><Link to="/about" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">About</Link></li>
             <li><Link to="/student" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">Student</Link></li>
-            <li><Link to="/registration" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">Registration</Link></li>
+            <li><Link to="/registration" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">Register</Link></li>
             <li><Link to="/contact" className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 transition-colors duration-200 text-white font-semibold shadow text-base">Contact</Link></li>
           </ul>
         </nav>

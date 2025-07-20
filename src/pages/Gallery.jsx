@@ -69,10 +69,21 @@ export default function HorizontalGallery() {
   // Optional: Sync page state on manual scroll (advanced)
 
   return (
+<<<<<<< HEAD
     <div className="bg-white text-gray-800 py-8">
       <div className="max-w-5xl mx-auto">
         {/* Gallery Section Header */}
         <h2 className="text-2xl font-bold mb-4">Gallery SMP Negeri 1 Cibadak</h2>
+=======
+    <div className="bg-white text-gray-800">
+      {/* Header Banner */}
+      <div className="relative w-full h-60 bg-cover bg-center bg-[url('https://images.pexels.com/photos/159775/library-la-trobe-study-students-159775.jpeg')]">
+        <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-white">
+          <h2 className="text-3xl font-bold">Gallery SMP Negeri 1 Cibadak</h2>
+          <p className="text-sm mt-2">Some Photos at SMP Negeri 1 Cibadak</p>
+        </div>
+      </div>
+>>>>>>> b498135a28f6c2231456eed1ec94d629737b957f
 
         {/* Horizontal Scroll Buttons */}
         <div className="flex items-center">
