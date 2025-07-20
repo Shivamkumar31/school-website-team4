@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import bannerImage from "../assets/bannerImage.png";
-import principalImage from "../assets/principal-group.png";
-import Gallery from "../pages/Gallery"; 
+import Gallery from "../pages/Gallery";
+import PrincipalMessage from "../components/PrincipalMessage";
+
+import InfoCard from "../components/InfoCard";
 
 export default function Home() {
   const [showFull, setShowFull] = useState(false);
@@ -17,12 +19,12 @@ export default function Home() {
           className="w-full h-[310px] object-cover block"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-white-900 bg-opacity-50 flex items-center justify-center flex-col text-white text-center p-4">
-           <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-2">
             Welcome to Vishwa Bharati School
           </h2>
           <p className="text-sm md:text-base max-w-xl">
             A place of excellence in education, discipline, and development for every student.
-          </p> 
+          </p>
         </div>
       </section>
 
@@ -33,54 +35,14 @@ export default function Home() {
           <InfoCard title="Start Time" icon="⏰" time="08:00 AM" date="2020-06-29" />
           <InfoCard title="End Time" icon="🕔" time="05:00 PM" date="2020-07-04" />
           <InfoCard title="Venue" icon="📍" time="SMPN 1 Cibadak Building" />
+
         </div>
       </section>
+
+
 
       {/*  Principal's Message Section */}
-      <section className="bg-sky-300 py-12">
-        <div className="max-w-6xl mx-auto px-6 md:flex items-start gap-10">
-          {/* Text Section */}
-          <div className="md:w-2/3 text-justify text-base leading-relaxed text-gray-800">
-            <h2 className="text-2xl font-bold text-sky-900 mb-4">Principal's Message</h2>
-            <p className="mb-4">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
-
-            {showFull ? (
-              <>
-                <p className="mb-4">
-                  We hope this message finds you in good health. In light of the ongoing COVID-19 situation, and as per the decision of the Regent of Sukabumi (No. 421/Kep.444/Disdik/2020), the new student admissions (PPDB) for the 2020/2021 academic year will be held online. This applies to all levels including Kindergarten, Elementary School, and Junior High School.
-                </p>
-                <p className="mb-4">
-                  We would like to inform you that the PPDB for SMP Negeri 1 Cibadak will be conducted via our official website:
-                  <a href="http://smpn1cibadak.sch.id/ppdb/" className="text-blue-800 underline ml-1" target="_blank" rel="noopener noreferrer">
-                    smpn1cibadak.sch.id/ppdb
-                  </a>, and will follow the schedule attached in the official announcement.
-                </p>
-              </>
-            ) : (
-              <p className="mb-4">
-                We hope this message finds you in good health. In light of the ongoing COVID-19 situation...
-              </p>
-            )}
-
-            <button
-              onClick={() => setShowFull(!showFull)}
-              className="mt-4 px-4 py-2 bg-white text-sky-700 border border-sky-700 rounded hover:bg-sky-100 transition"
-            >
-              {showFull ? 'Show Less' : 'Show More'}
-            </button>
-          </div>
-
-          {/* Image Section */}
-          <div className="md:w-1/3 mt-8 md:mt-0 text-center">
-            <img
-              src={principalImage}
-              alt="Principal and Staff"
-              className="rounded-md shadow-lg w-full object-cover"
-            />
-            <p className="text-sm mt-2 text-gray-700">Staff of SMPN 1 Cibadak</p>
-          </div>
-        </div>
-      </section>
+      <PrincipalMessage />
 
       {/*  Gallery Section */}
       <section className="bg-white py-10">
@@ -93,14 +55,3 @@ export default function Home() {
   );
 }
 
-//  Reusable InfoCard Component
-function InfoCard({ title, icon, time, date }) {
-  return (
-    <div className="border rounded-lg shadow-md p-4 text-center bg-white">
-      <div className="text-3xl mb-2">{icon}</div>
-      <h4 className="font-semibold">{title}</h4>
-      {time && <p className="text-sm">{time}</p>}
-      {date && <p className="text-sm text-gray-600">{date}</p>}
-    </div>
-  );
-}
