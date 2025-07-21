@@ -1,7 +1,57 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+
+// Lazy loading image component for better performance
+const LazyImage = ({ src, alt, className, ...props }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={className}>
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          {...props}
+        />
+      )}
+      {!isLoaded && isInView && (
+        <div
+          className={`${className} bg-gray-200 animate-pulse flex items-center justify-center`}
+        >
+          <div className="text-gray-400 text-sm">Loading...</div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const galleryData = [
   {
@@ -48,88 +98,80 @@ const galleryData = [
   },
 ];
 
-// Component for horizontal gallery (used on home page)
+// Component for horizontal gallery (used on home page) - Optimized for performance
 export function HorizontalGallery() {
   const scrollRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Simplified animation variants for better performance
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-      },
-    },
+  // Show only first 6 items for better initial performance
+  const displayData = galleryData.slice(0, 6);
+
+  // Mouse drag handlers for desktop only
+  const handleMouseDown = (e) => {
+    if (window.innerWidth <= 768) return; // Skip on mobile/tablet
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+    scrollRef.current.style.cursor = "grabbing";
   };
 
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = "grab";
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = "grab";
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || window.innerWidth <= 768) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
   return (
-    <motion.div
-      className="bg-transparent text-gray-800 py-4 sm:py-6 lg:py-8"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
+    <div className="bg-transparent text-gray-800 py-4 sm:py-6 lg:py-8">
       <div className="max-w-6xl mx-auto px-2 sm:px-4">
         {/* Gallery Section Header */}
-        <motion.h2
-          className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-center lg:text-left text-gray-800"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-center lg:text-left text-gray-800">
           Gallery SMP Negeri 1 Cibadak
-        </motion.h2>
+        </h2>
 
-        {/* Horizontal Scrollable Gallery */}
-        <motion.div
+        {/* Horizontal Scrollable Gallery - Draggable for desktop */}
+        <div
           ref={scrollRef}
-          className="flex space-x-3 sm:space-x-4 lg:space-x-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 py-2 snap-x snap-mandatory"
+          className="flex space-x-3 sm:space-x-4 lg:space-x-6 overflow-x-auto scrollbar-hide px-2 sm:px-4 py-2 snap-x snap-mandatory select-none"
           style={{
-            scrollBehavior: "smooth",
+            scrollBehavior: "auto", // Changed from smooth to auto
             scrollSnapType: "x mandatory",
             width: "100%",
+            cursor: window.innerWidth > 768 ? "grab" : "default",
           }}
-          variants={containerVariants}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
         >
-          {galleryData.map((item, idx) => (
-            <motion.div
+          {displayData.map((item, idx) => (
+            <div
               key={idx}
-              className="w-[280px] sm:w-[300px] lg:w-[320px] bg-white rounded-xl shadow-lg hover:shadow-xl snap-center overflow-hidden flex-shrink-0 border border-gray-100"
-              variants={cardVariants}
-              whileHover={{
-                scale: 1.02,
-                y: -3,
-                transition: { duration: 0.3 },
-              }}
-              whileTap={{ scale: 0.98 }}
+              className="w-[280px] sm:w-[300px] lg:w-[320px] bg-white rounded-xl shadow-lg hover:shadow-xl snap-center overflow-hidden flex-shrink-0 border border-gray-100 transition-shadow duration-200"
             >
               <div className="relative overflow-hidden">
-                <motion.img
+                <LazyImage
                   src={item.img}
                   alt={item.title}
-                  loading="lazy"
-                  className="w-full h-32 sm:h-40 lg:h-44 object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
+                  className="w-full h-32 sm:h-40 lg:h-44 object-cover transition-transform duration-300 hover:scale-105"
                 />
                 <div className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-br-lg font-semibold shadow-md">
                   {item.title}
@@ -166,11 +208,11 @@ export function HorizontalGallery() {
                   </span>
                 )}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -195,73 +237,32 @@ export default function FullGalleryPage() {
       ? galleryData
       : galleryData.filter((item) => item.title === selectedCategory);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
+  // Removed animations for better performance
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <motion.section
-        className="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-r from-blue-600 to-purple-700 flex items-center justify-center overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <section className="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-r from-blue-600 to-purple-700 flex items-center justify-center overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg')] bg-cover bg-center opacity-30"></div>
 
         {/* Hero Content */}
-        <motion.div
-          className="relative z-10 text-center text-white px-4"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
+        <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">
             Gallery SMP Negeri 1 Cibadak
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl opacity-90">
             Some Photos at SMP Negeri 1 Cibadak
           </p>
-        </motion.div>
+        </div>
 
         {/* Decorative Elements */}
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500"></div>
-      </motion.section>
+      </section>
 
       {/* Category Filter */}
-      <motion.section
-        className="py-8 bg-white shadow-sm"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-      >
+      <section className="py-8 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
@@ -279,40 +280,21 @@ export default function FullGalleryPage() {
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Gallery Grid */}
-      <motion.section
-        className="py-12 px-4 sm:px-6 lg:px-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            key={selectedCategory} // Re-animate when category changes
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredData.map((item, idx) => (
-              <motion.div
+              <div
                 key={`${selectedCategory}-${idx}`}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl overflow-hidden group cursor-pointer transform transition-all duration-300"
-                variants={cardVariants}
-                whileHover={{
-                  y: -8,
-                  scale: 1.02,
-                  transition: { duration: 0.3 },
-                }}
-                whileTap={{ scale: 0.98 }}
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:scale-105"
               >
                 <div className="relative overflow-hidden">
-                  <motion.img
+                  <LazyImage
                     src={item.img}
                     alt={item.title}
-                    loading="lazy"
                     className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-blue-600 text-white text-sm px-3 py-1 rounded-full font-semibold shadow-lg">
@@ -349,25 +331,20 @@ export default function FullGalleryPage() {
                     <span className="text-gray-400 text-sm">Lihat Foto</span>
                   )}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Empty State */}
           {filteredData.length === 0 && (
-            <motion.div
-              className="text-center py-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="text-center py-12">
               <p className="text-gray-500 text-lg">
                 No photos found in this category.
               </p>
-            </motion.div>
+            </div>
           )}
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
