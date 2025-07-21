@@ -7,27 +7,26 @@ import principalImage from "../assets/principal-group.png";
 export default function PrincipalMessage() {
   const [showFull, setShowFull] = useState(false);
 
-  // Animation variants
+  // Optimized animation variants
   const textVariant = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   const imageVariant = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.7, delay: 0.3, type: "spring", bounce: 0.3 },
+      transition: { duration: 0.4, delay: 0.1 },
     },
     hover: {
-      scale: 1.04,
-      boxShadow: "0px 8px 30px rgba(0,175,255,0.15)",
-      transition: { duration: 0.3 },
+      scale: 1.02,
+      transition: { duration: 0.2 },
     },
   };
 
@@ -39,19 +38,12 @@ export default function PrincipalMessage() {
           <motion.div
             variants={textVariant}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            animate="visible"
             className="lg:w-2/3 text-justify text-sm sm:text-base leading-relaxed text-gray-800 bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg"
           >
-            <motion.h2
-              className="text-xl sm:text-2xl lg:text-3xl font-bold text-sky-900 mb-4 sm:mb-6 text-center lg:text-left"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-sky-900 mb-4 sm:mb-6 text-center lg:text-left">
               Principal's Message
-            </motion.h2>
+            </h2>
             <p className="mb-4">Assalamu’alaikum warahmatullahi wabarakatuh,</p>
 
             {showFull ? (
@@ -98,31 +90,22 @@ export default function PrincipalMessage() {
           <motion.div
             variants={imageVariant}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             whileHover="hover"
-            viewport={{ once: true, amount: 0.3 }}
             className="lg:w-1/3 mt-6 lg:mt-0 text-center"
           >
             <div className="relative overflow-hidden rounded-xl shadow-xl bg-white p-2 sm:p-3">
-              <motion.img
+              <img
                 src={principalImage}
                 alt="Principal and Staff"
                 loading="lazy"
                 className="rounded-lg w-full object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </div>
-            <motion.p
-              className="text-xs sm:text-sm mt-3 sm:mt-4 text-gray-700 font-medium"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
+            <p className="text-xs sm:text-sm mt-3 sm:mt-4 text-gray-700 font-medium">
               Staff of SMPN 1 Cibadak
-            </motion.p>
+            </p>
           </motion.div>
         </div>
       </div>

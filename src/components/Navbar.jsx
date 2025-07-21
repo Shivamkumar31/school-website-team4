@@ -82,7 +82,7 @@ export default function Header() {
                   <span className="relative z-10">{link.label}</span>
                   {isActive(link.to) && (
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg"
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg "
                       layoutId="activeTab"
                       transition={{ duration: 0.3 }}
                     />
@@ -143,6 +143,7 @@ export default function Header() {
                   { to: "/", label: "Home" },
                   { to: "/about", label: "About" },
                   { to: "/gallery", label: "Gallery" },
+                  { to: "/facilities", label: "Facilities" },
                   { to: "/student", label: "Student" },
                   { to: "/registration", label: "Register" },
                   { to: "/contact", label: "Contact" },
