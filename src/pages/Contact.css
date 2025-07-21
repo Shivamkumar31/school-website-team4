@@ -1,0 +1,228 @@
+@keyframes smoothFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.smooth-landing {
+  animation: smoothFadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.contact-form-modern,
+.contact-form-modern * {
+  box-sizing: border-box;
+}
+
+.modern-contact-section {
+  background: #f4f7fb;
+  color: #15375c;
+  padding: 2.5rem 0 3rem 0;
+}
+
+.modern-contact-container {
+  max-width: 930px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.contact-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #173364;
+  margin-bottom: .3rem;
+  letter-spacing: -1px;
+}
+
+.contact-header h2 span {
+  color: #3486eb;
+}
+
+.contact-header p {
+  color: #3c587c;
+  font-size: 1.12em;
+  margin-bottom: 2.4rem;
+}
+
+.modern-contact-main {
+  display: flex;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.contact-form-modern {
+  background: #fff;
+  padding: 2.2rem 1.2rem 2rem 1.2rem;
+  border-radius: 17px;
+  box-shadow: 0 8px 20px 2px rgba(52,135,235,0.09);
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+  max-width: 100%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: .8rem;
+  width: 100%;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%; left: 1.05rem;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 .25rem;
+  color: #5896e7;
+  font-size: 1em;
+  pointer-events: none;
+  transition: .16s;
+  opacity: .78;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.02em;
+  padding: 1rem 1.05rem .95rem 1.05rem;
+  border: 1.6px solid #d1e2f6;
+  border-radius: 11px;
+  background: #f8fbfd;
+  outline: none;
+  box-shadow: none;
+  transition: border .18s, background .2s;
+  color: #173364;
+  font-weight: 500;
+  margin-bottom: 4px;
+  resize: vertical;
+  display: block;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3486eb;
+  background: #f3f9fd;
+}
+
+.form-group.filled label,
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  top: -0.65rem; left: 0.75rem;
+  font-size: 0.92em;
+  color: #173364;
+  background: #fff;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.form-error {
+  color: #e15653;
+  font-size: 0.93em;
+  position: absolute;
+  left: 1.15rem; bottom: -1.28rem;
+}
+
+.send-btn-modern {
+  margin-top: .4rem;
+  border: none;
+  width: 100%;
+  background: linear-gradient(90deg,#3486eb 40%,#173364 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.13em;
+  padding: 0.9em 0;
+  border-radius: 11px;
+  box-shadow: 0 3px 14px 0 rgba(107,157,223,0.15);
+  transition: background .18s;
+  cursor: pointer;
+  letter-spacing: .5px;
+  max-width: 100%;
+}
+
+.send-btn-modern:hover {
+  background: linear-gradient(90deg,#286ac0 35%,#195089 90%);
+}
+
+.form-success {
+  margin-top: .7rem;
+  color: #219150;
+  background: #e7f6ef;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1em;
+  padding: .6em .8em;
+}
+
+.contact-info-modern {
+  flex: 0.9 1 260px;
+  align-self: flex-start;
+  background: linear-gradient(120deg,#f3f7fd 80%, #e8f0fc 100%);
+  border-radius: 17px;
+  box-shadow: 0 6px 18px 1px rgba(44,109,185,0.13);
+  padding: 2.1rem 1.7rem 1.6rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  min-width: 230px;
+  max-width: 100%;
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: .84rem;
+  font-size: 1.03em;
+  color: #1e4375;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.info-icon {
+  font-size: 1.24em;
+  color: #3486eb;
+  margin-right: 2px;
+}
+
+.contact-info-modern a {
+  color: #206edc;
+  text-decoration: none;
+  transition: color .15s;
+  word-break: break-word;
+}
+
+.contact-info-modern a:hover {
+  color: #0a379a;
+  text-decoration: underline;
+}
+
+.modern-map {
+  margin-top: .8rem;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+  .modern-contact-main {
+    flex-direction: column;
+    gap: 2.1rem;
+  }
+  .contact-form-modern, .contact-info-modern {
+    padding: 1.1rem 1rem 1.2rem 1rem;
+  }
+}
+@media (max-width: 500px) {
+  .modern-contact-section {
+    padding: 1.1rem 0 .6rem 0;
+  }
+  .modern-contact-container {
+    padding: 0 .23rem;
+  }
+}
