@@ -58,6 +58,7 @@ const galleryData = [
     title: "Guru",
     img: "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg",
     desc: "Beberapa Foto Guru - Guru SMP Negeri 1 Cibadak",
+    link:'/teacher-data'
   },
   {
     title: "Sanlat",
