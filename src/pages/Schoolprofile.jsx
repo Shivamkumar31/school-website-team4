@@ -44,7 +44,7 @@ const SchoolProfile = () => {
           className="mt-6 overflow-hidden rounded-lg bg-red-600 text-white"
         >
           <a
-            href="https://your-admission-link.com"
+            href="/registration"
             className="block whitespace-nowrap animate-marquee py-2 text-center font-semibold hover:underline"
           >
             🎓 New Admission is Open - Click Here to Apply 🎓
