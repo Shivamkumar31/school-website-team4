@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import "./Contact.css";
 
@@ -44,16 +44,24 @@ export default function Contact() {
   }
 
   return (
-    <section className={`modern-contact-section${animate ? " smooth-landing" : ""}`}>
+    <section
+      className={`modern-contact-section${animate ? " smooth-landing" : ""}`}
+    >
       <div className="modern-contact-container">
         <div className="contact-header">
           <h2>
             Contact <span>VBSS</span>
           </h2>
-          <p>We'd love to hear from you. Reach out via the form or info below.</p>
+          <p>
+            We'd love to hear from you. Reach out via the form or info below.
+          </p>
         </div>
         <div className="modern-contact-main">
-          <form className="contact-form-modern" onSubmit={handleSubmit} noValidate>
+          <form
+            className="contact-form-modern"
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <div className={`form-group ${form.name ? "filled" : ""}`}>
               <input
                 name="name"
@@ -76,7 +84,9 @@ export default function Contact() {
                 autoComplete="email"
               />
               <label>Email</label>
-              {errors.email && <span className="form-error">{errors.email}</span>}
+              {errors.email && (
+                <span className="form-error">{errors.email}</span>
+              )}
             </div>
             <div className={`form-group ${form.message ? "filled" : ""}`}>
               <textarea
@@ -87,7 +97,9 @@ export default function Contact() {
                 required
               />
               <label>Message</label>
-              {errors.message && <span className="form-error">{errors.message}</span>}
+              {errors.message && (
+                <span className="form-error">{errors.message}</span>
+              )}
             </div>
             <button className="send-btn-modern" type="submit">
               Send Message
@@ -121,7 +133,7 @@ export default function Contact() {
                   border: "0",
                   borderRadius: "11px",
                   marginTop: "0.5rem",
-                  display: "block"
+                  display: "block",
                 }}
                 allowFullScreen=""
                 loading="lazy"

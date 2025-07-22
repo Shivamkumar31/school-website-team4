@@ -9,7 +9,7 @@ import Gallery from "./pages/Gallery";
 import Sanlat from "./pages/Sanlat";
 import Facitilies from "./pages/Facilities";
 import TeacherData from "./pages/Teacherdata";
-import Schoolprofile from "./pages/Schoolprofile"
+import Schoolprofile from "./pages/Schoolprofile";
 export default function App() {
   return (
     <Router>

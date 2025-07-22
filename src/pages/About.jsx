@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import bannerImage from "../assets/bannerImage.webp";
 import bannerImage2 from "../assets/bannerImage2.avif";
@@ -21,7 +22,9 @@ const About = () => {
   }, [bannerImages.length]);
 
   const handlePrev = () => {
-    setCurrentBanner((prev) => (prev - 1 + bannerImages.length) % bannerImages.length);
+    setCurrentBanner(
+      (prev) => (prev - 1 + bannerImages.length) % bannerImages.length
+    );
   };
   const handleNext = () => {
     setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
@@ -52,13 +55,14 @@ const About = () => {
           >
             Welcome to Vishwa Bharati Shiksha Sadan
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-base md:text-lg max-w-2xl rounded-lg bg-black/60 px-6 py-2 mt-2 shadow text-white"
           >
-            A place of excellence in education, discipline, and development for every student.
+            A place of excellence in education, discipline, and development for
+            every student.
           </motion.p>
         </div>
         {/* Prev/Next Arrows */}
@@ -67,8 +71,19 @@ const About = () => {
           className="absolute left-6 top-1/2 -translate-y-1/2 bg-gradient-to-r from-sky-700 to-sky-400 hover:from-sky-900 hover:to-sky-500 text-white shadow-xl rounded-full p-2.5 z-20 border-2 border-white transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-400"
           aria-label="Previous Banner"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
           </svg>
         </button>
         <button
@@ -76,14 +91,25 @@ const About = () => {
           className="absolute right-6 top-1/2 -translate-y-1/2 bg-gradient-to-l from-sky-700 to-sky-400 hover:from-sky-900 hover:to-sky-500 text-white shadow-xl rounded-full p-2.5 z-20 border-2 border-white transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-400"
           aria-label="Next Banner"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
           </svg>
         </button>
       </section>
-      
+
       {/* About Content */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1, type: "spring" }}
@@ -95,20 +121,30 @@ const About = () => {
         </h2>
         <div className="space-y-6 leading-relaxed text-justify text-[18px]">
           <p>
-            SMP Negeri 1 Cibadak was established in 1965 based on the Decree of the Minister of Education and Culture of the Republic of Indonesia.
-            Initially, the school was founded in the Kebon Pala area, which has now become the Cibadak Terminal 5 Market.
+            SMP Negeri 1 Cibadak was established in 1965 based on the Decree of
+            the Minister of Education and Culture of the Republic of Indonesia.
+            Initially, the school was founded in the Kebon Pala area, which has
+            now become the Cibadak Terminal 5 Market.
           </p>
           <p>
-            As a part of the educational world in the Cibadak District, SMP Negeri 1 Cibadak plays an important role in shaping the character and future of young learners.
+            As a part of the educational world in the Cibadak District, SMP
+            Negeri 1 Cibadak plays an important role in shaping the character
+            and future of young learners.
           </p>
           <p>
-            The advancement of Science and Technology increasingly tends to make people busier in influencing worldly affairs. In this context, education becomes even more essential.
+            The advancement of Science and Technology increasingly tends to make
+            people busier in influencing worldly affairs. In this context,
+            education becomes even more essential.
           </p>
           <p>
-            The existence of SMP Negeri 1 Cibadak is greatly needed by the community in the Cibadak District as a center of educational development and opportunity.
+            The existence of SMP Negeri 1 Cibadak is greatly needed by the
+            community in the Cibadak District as a center of educational
+            development and opportunity.
           </p>
           <p>
-            The Teaching and Learning Activities organized are helpful to the community in meeting the demands for knowledge, character, and career-building for students.
+            The Teaching and Learning Activities organized are helpful to the
+            community in meeting the demands for knowledge, character, and
+            career-building for students.
           </p>
         </div>
       </motion.section>

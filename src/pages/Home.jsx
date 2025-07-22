@@ -3,7 +3,6 @@ import bannerImage from "../assets/bannerImage.webp";
 import bannerImage2 from "../assets/bannerImage2.avif";
 import { HorizontalGallery } from "../pages/Gallery";
 import PrincipalMessage from "../components/PrincipalMessage";
-
 import InfoCard from "../components/InfoCard";
 
 export default function Home() {
