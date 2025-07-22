@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const initialState = {
@@ -28,8 +29,10 @@ const Registration = () => {
   const validate = () => {
     let err = {};
     if (!form.fullName) err.fullName = "Name is required";
-    if (!form.email || !/\S+@\S+\.\S+/.test(form.email)) err.email = "Valid email required";
-    if (!form.phone || !/^\d{10}$/.test(form.phone)) err.phone = "Valid 10-digit phone required";
+    if (!form.email || !/\S+@\S+\.\S+/.test(form.email))
+      err.email = "Valid email required";
+    if (!form.phone || !/^\d{10}$/.test(form.phone))
+      err.phone = "Valid 10-digit phone required";
     if (!form.dob) err.dob = "Date of birth required";
     if (!form.grade) err.grade = "Select a grade";
     if (!form.address) err.address = "Address required";
@@ -69,10 +72,14 @@ const Registration = () => {
               name="fullName"
               value={form.fullName}
               onChange={handleChange}
-              className={`w-full border rounded px-3 py-2 ${errors.fullName ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+              className={`w-full border rounded px-3 py-2 ${
+                errors.fullName ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               placeholder="Enter full name"
             />
-            {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+            {errors.fullName && (
+              <span className="text-red-500 text-sm">{errors.fullName}</span>
+            )}
           </div>
 
           {/* Email */}
@@ -83,10 +90,14 @@ const Registration = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full border rounded px-3 py-2 ${errors.email ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+              className={`w-full border rounded px-3 py-2 ${
+                errors.email ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               placeholder="student@email.com"
             />
-            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+            {errors.email && (
+              <span className="text-red-500 text-sm">{errors.email}</span>
+            )}
           </div>
 
           {/* Phone */}
@@ -97,11 +108,15 @@ const Registration = () => {
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              className={`w-full border rounded px-3 py-2 ${errors.phone ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+              className={`w-full border rounded px-3 py-2 ${
+                errors.phone ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               placeholder="10-digit number"
               maxLength={10}
             />
-            {errors.phone && <span className="text-red-500 text-sm">{errors.phone}</span>}
+            {errors.phone && (
+              <span className="text-red-500 text-sm">{errors.phone}</span>
+            )}
           </div>
 
           {/* DOB and Grade */}
@@ -113,17 +128,25 @@ const Registration = () => {
                 name="dob"
                 value={form.dob}
                 onChange={handleChange}
-                className={`w-full border rounded px-3 py-2 ${errors.dob ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+                className={`w-full border rounded px-3 py-2 ${
+                  errors.dob ? "border-red-400" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               />
-              {errors.dob && <span className="text-red-500 text-sm">{errors.dob}</span>}
+              {errors.dob && (
+                <span className="text-red-500 text-sm">{errors.dob}</span>
+              )}
             </div>
             <div className="flex-1">
-              <label className="block font-medium mb-1">Grade Applying For*</label>
+              <label className="block font-medium mb-1">
+                Grade Applying For*
+              </label>
               <select
                 name="grade"
                 value={form.grade}
                 onChange={handleChange}
-                className={`w-full border rounded px-3 py-2 ${errors.grade ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+                className={`w-full border rounded px-3 py-2 ${
+                  errors.grade ? "border-red-400" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               >
                 <option value="">Select grade</option>
                 <option value="6">6th Grade</option>
@@ -132,7 +155,9 @@ const Registration = () => {
                 <option value="9">9th Grade</option>
                 <option value="10">10th Grade</option>
               </select>
-              {errors.grade && <span className="text-red-500 text-sm">{errors.grade}</span>}
+              {errors.grade && (
+                <span className="text-red-500 text-sm">{errors.grade}</span>
+              )}
             </div>
           </div>
 
@@ -143,25 +168,35 @@ const Registration = () => {
               name="address"
               value={form.address}
               onChange={handleChange}
-              className={`w-full border rounded px-3 py-2 ${errors.address ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+              className={`w-full border rounded px-3 py-2 ${
+                errors.address ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               rows={2}
               placeholder="Street, City, State"
             />
-            {errors.address && <span className="text-red-500 text-sm">{errors.address}</span>}
+            {errors.address && (
+              <span className="text-red-500 text-sm">{errors.address}</span>
+            )}
           </div>
 
           {/* Parent/Guardian Name */}
           <div>
-            <label className="block font-medium mb-1">Parent/Guardian Name*</label>
+            <label className="block font-medium mb-1">
+              Parent/Guardian Name*
+            </label>
             <input
               type="text"
               name="parentName"
               value={form.parentName}
               onChange={handleChange}
-              className={`w-full border rounded px-3 py-2 ${errors.parentName ? 'border-red-400' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-200`}
+              className={`w-full border rounded px-3 py-2 ${
+                errors.parentName ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-blue-200`}
               placeholder="Parent or guardian"
             />
-            {errors.parentName && <span className="text-red-500 text-sm">{errors.parentName}</span>}
+            {errors.parentName && (
+              <span className="text-red-500 text-sm">{errors.parentName}</span>
+            )}
           </div>
 
           {/* Agreement Checkbox */}
@@ -174,10 +209,13 @@ const Registration = () => {
               className="accent-sky-600"
             />
             <label className="text-sm">
-              I confirm all information is correct and agree to the school's policies.*
+              I confirm all information is correct and agree to the school's
+              policies.*
             </label>
           </div>
-          {errors.agree && <span className="text-red-500 text-sm block">{errors.agree}</span>}
+          {errors.agree && (
+            <span className="text-red-500 text-sm block">{errors.agree}</span>
+          )}
 
           {/* Submit Button */}
           <button
@@ -189,7 +227,9 @@ const Registration = () => {
 
           {/* Success Message */}
           {submitted && (
-            <div className="text-green-600 text-center font-medium pt-2">Registration Successful!</div>
+            <div className="text-green-600 text-center font-medium pt-2">
+              Registration Successful!
+            </div>
           )}
         </form>
       </div>

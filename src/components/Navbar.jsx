@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import logoSrc from "../assets/vbss-logo.png"; 
+import logoSrc from "../assets/vbss-logo.png";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
