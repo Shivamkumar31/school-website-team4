@@ -27,7 +27,7 @@
 .modern-contact-container {
   max-width: 930px;
   margin: auto;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Base padding for left and right */
 }
 
 .contact-header h2 {
@@ -224,9 +224,10 @@
 }
 @media (max-width: 500px) {
   .modern-contact-section {
-    padding: 1.1rem 0 0.6rem 0;
+    padding: 1.5rem 0 1rem 0; /* Adjusted vertical padding slightly */
   }
   .modern-contact-container {
-    padding: 0 0.23rem;
+    /* This was the main issue. Increased padding to prevent touching edges. */
+    padding: 0 1rem;
   }
 }
