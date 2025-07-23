@@ -21,15 +21,6 @@ const About = () => {
     return () => clearInterval(interval);
   }, [bannerImages.length]);
 
-  const handlePrev = () => {
-    setCurrentBanner(
-      (prev) => (prev - 1 + bannerImages.length) % bannerImages.length
-    );
-  };
-  const handleNext = () => {
-    setCurrentBanner((prev) => (prev + 1) % bannerImages.length);
-  };
-
   return (
     <div className="font-sans bg-gradient-to-b from-blue-50 to-white min-h-screen">
       {/* Banner Section */}
@@ -43,7 +34,7 @@ const About = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            className="absolute w-full h-full object-cover z-0 rounded-b-3xl shadow-lg"
+            className="absolute w-full h-full object-cover z-0 shadow-lg"
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-sky-900/70 via-sky-800/40 to-transparent flex items-center justify-center flex-col text-white text-center p-4 rounded-b-3xl z-10">
@@ -65,47 +56,6 @@ const About = () => {
             every student.
           </motion.p>
         </div>
-        {/* Prev/Next Arrows */}
-        <button
-          onClick={handlePrev}
-          className="absolute left-6 top-1/2 -translate-y-1/2 bg-gradient-to-r from-sky-700 to-sky-400 hover:from-sky-900 hover:to-sky-500 text-white shadow-xl rounded-full p-2.5 z-20 border-2 border-white transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-400"
-          aria-label="Previous Banner"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute right-6 top-1/2 -translate-y-1/2 bg-gradient-to-l from-sky-700 to-sky-400 hover:from-sky-900 hover:to-sky-500 text-white shadow-xl rounded-full p-2.5 z-20 border-2 border-white transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-400"
-          aria-label="Next Banner"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button>
       </section>
 
       {/* About Content */}
