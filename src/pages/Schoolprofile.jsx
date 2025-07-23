@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import schoolLogo from "../assets/vbss-logo.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -23,7 +24,7 @@ const SchoolProfile = () => {
           <motion.img
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
-            src="src/assets/vbss-logo.png"
+            src={schoolLogo}
             alt="School Logo"
             className="w-28 h-28 rounded-full border-4 border-yellow-600 shadow-lg"
           />
