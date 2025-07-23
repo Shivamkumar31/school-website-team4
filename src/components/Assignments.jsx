@@ -1,5 +1,3 @@
-import React from "react";
-
 const assignmentsByClass = {
   5: [
     { title: "Math Assignment 1", file: "/assets/class5-math-assignment1.pdf" },
