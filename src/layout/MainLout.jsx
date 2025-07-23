@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function MainLayout({ children }) {
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function MainLayout({ children }) {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
+      <ScrollToTop />
       <main className="flex-grow">{children}</main>
       <Footer />
     </div>

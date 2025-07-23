@@ -10,12 +10,11 @@ import Sanlat from "./pages/Sanlat";
 import Facitilies from "./pages/Facilities";
 import TeacherData from "./pages/Teacherdata";
 import Schoolprofile from "./pages/Schoolprofile";
-import ScrollToTop from "./components/ScrollToTop";
 import Welcome from "./pages/Welcome";
+
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />
