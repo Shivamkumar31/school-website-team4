@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 
 // Lazy loading image component for better performance
 const LazyImage = ({ src, alt, className, ...props }) => {
