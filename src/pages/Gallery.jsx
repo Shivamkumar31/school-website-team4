@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 // Lazy loading image component for better performance
 const LazyImage = ({ src, alt, className, ...props }) => {
@@ -143,7 +143,7 @@ export function HorizontalGallery() {
       <div className="max-w-6xl mx-auto px-2 sm:px-4">
         {/* Gallery Section Header */}
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-center lg:text-left text-gray-800">
-          Gallery SMP Negeri 1 Cibadak
+          School Gallery
         </h2>
 
         {/* Horizontal Scrollable Gallery - Draggable for desktop */}
@@ -186,7 +186,7 @@ export function HorizontalGallery() {
                     to={item.link}
                     className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mt-2 sm:mt-3 text-xs sm:text-sm transition-colors duration-200 group"
                   >
-                    Lihat Foto
+                    View Photos
                     <svg
                       className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
                       fill="none"
@@ -203,7 +203,7 @@ export function HorizontalGallery() {
                   </Link>
                 ) : (
                   <span className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3 block">
-                    Lihat Foto
+                    View Photos
                   </span>
                 )}
               </div>
@@ -249,10 +249,10 @@ export default function FullGalleryPage() {
         {/* Hero Content */}
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">
-            Gallery SMP Negeri 1 Cibadak
+            School Gallery
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl opacity-90">
-            Some Photos at SMP Negeri 1 Cibadak
+            Capturing Moments at SMP Negeri 1 Cibadak
           </p>
         </div>
 
@@ -311,7 +311,7 @@ export default function FullGalleryPage() {
                       to={item.link}
                       className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200 group"
                     >
-                      Lihat Foto
+                      View Photos
                       <svg
                         className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
                         fill="none"
@@ -327,7 +327,7 @@ export default function FullGalleryPage() {
                       </svg>
                     </Link>
                   ) : (
-                    <span className="text-gray-400 text-sm">Lihat Foto</span>
+                    <span className="text-gray-400 text-sm">View Photos</span>
                   )}
                 </div>
               </div>

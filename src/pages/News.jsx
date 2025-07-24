@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const newsData = [
@@ -158,7 +159,7 @@ const newsData = [
     details:
       "Congratulations to all participating students and coaches! We secured trophies in football, athletics, and relay race at the city’s inter-school sports meet.",
     img: "https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/WC/933_Wan%20Chai%20Sports%20Ground%202.JPG",
-  }
+  },
 ];
 
 const containerVariants = {

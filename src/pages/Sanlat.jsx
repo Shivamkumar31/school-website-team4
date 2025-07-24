@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 import img1 from "../assets/gallery1.png";
 import img2 from "../assets/gallery2.png";
