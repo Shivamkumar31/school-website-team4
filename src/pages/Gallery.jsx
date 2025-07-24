@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 
 // Lazy loading image component for better performance
 const LazyImage = ({ src, alt, className, ...props }) => {
@@ -58,7 +56,7 @@ const galleryData = [
     title: "Guru",
     img: "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg",
     desc: "Beberapa Foto Guru - Guru SMP Negeri 1 Cibadak",
-    link:'/teacher-data'
+    link: "/teacher-data",
   },
   {
     title: "Sanlat",

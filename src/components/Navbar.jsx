@@ -1,12 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import logoSrc from "../assets/vbss-logo.png"; 
+import logoSrc from "../assets/vbss-logo.png";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const handleMobileLinkClick = () => {
+    window.scrollTo(0, 0);
+    setIsMenuOpen(false);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -47,7 +56,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link to="/" className="flex items-center gap-2 sm:gap-3">
+            <Link
+              to="/"
+              onClick={handleLinkClick}
+              className="flex items-center gap-2 sm:gap-3"
+            >
               <img
                 src={logoSrc}
                 alt="Logo"
@@ -74,18 +87,23 @@ export default function Header() {
               <li key={link.to}>
                 <Link
                   to={link.to}
+                  onClick={handleLinkClick}
                   className={`px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm lg:text-base relative overflow-hidden group ${
                     isActive(link.to)
-                      ? "bg-blue-600/80 text-white shadow-lg"
+                      ? "text-white"
                       : "text-gray-200 hover:text-white hover:bg-blue-700/50"
                   }`}
                 >
                   <span className="relative z-10">{link.label}</span>
                   {isActive(link.to) && (
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg "
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg"
                       layoutId="activeTab"
-                      transition={{ duration: 0.3 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 30,
+                      }}
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/20 group-hover:to-purple-400/20 rounded-lg transition-all duration-300"></div>
@@ -158,7 +176,7 @@ export default function Header() {
                   >
                     <Link
                       to={link.to}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={handleMobileLinkClick}
                       className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                         isActive(link.to)
                           ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"

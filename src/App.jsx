@@ -9,7 +9,9 @@ import Gallery from "./pages/Gallery";
 import Sanlat from "./pages/Sanlat";
 import Facitilies from "./pages/Facilities";
 import TeacherData from "./pages/Teacherdata";
-import Schoolprofile from "./pages/Schoolprofile"
+import Schoolprofile from "./pages/Schoolprofile";
+import Welcome from "./pages/Welcome";
+
 export default function App() {
   return (
     <Router>
@@ -25,6 +27,7 @@ export default function App() {
           <Route path="/facilities" element={<Facitilies />} />
           <Route path="/teacher-data" element={<TeacherData />} />
           <Route path="/school-profile" element={<Schoolprofile />} />
+          <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </MainLayout>
     </Router>
