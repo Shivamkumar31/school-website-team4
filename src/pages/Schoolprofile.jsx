@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import schoolLogo from "../assets/vbss-logo.png";
+import { NavLink } from "react-router";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -43,12 +44,12 @@ const SchoolProfile = () => {
           variants={fadeInUp}
           className="mt-6 overflow-hidden rounded-lg bg-red-600 text-white"
         >
-          <a
-            href="/registration"
+          <NavLink
+            to="/registration"
             className="block whitespace-nowrap animate-marquee py-2 text-center font-semibold hover:underline"
           >
             🎓 New Admission is Open - Click Here to Apply 🎓
-          </a>
+          </NavLink>
         </motion.div>
 
         {/* Contact and Principal Info */}
