@@ -11,6 +11,7 @@ import Facitilies from "./pages/Facilities";
 import TeacherData from "./pages/Teacherdata";
 import Schoolprofile from "./pages/Schoolprofile";
 import News from "./pages/News"
+import Welcome from "./pages/Welcome"
 export default function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/teacher-data" element={<TeacherData />} />
           <Route path="/school-profile" element={<Schoolprofile />} />
           <Route path="/news" element={<News />} />
+           <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </MainLayout>
     </Router>
