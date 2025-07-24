@@ -1,36 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Student from "./pages/Student";
-import Registration from "./pages/Registration";
-import Contact from "./pages/Contact";
-import MainLayout from "./layout/MainLout";
-import Gallery from "./pages/Gallery";
-import Sanlat from "./pages/Sanlat";
-import Facitilies from "./pages/Facilities";
-import TeacherData from "./pages/Teacherdata";
-import Schoolprofile from "./pages/Schoolprofile";
-import News from "./pages/News"
-import Welcome from "./pages/Welcome"
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { routes } from "./routes";
+
+// Create browser router - this will only run on the client
+const router = createBrowserRouter(routes);
+
 export default function App() {
-  return (
-    <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/student" element={<Student />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/sanlat" element={<Sanlat />} />
-          <Route path="/facilities" element={<Facitilies />} />
-          <Route path="/teacher-data" element={<TeacherData />} />
-          <Route path="/school-profile" element={<Schoolprofile />} />
-          <Route path="/news" element={<News />} />
-           <Route path="/welcome" element={<Welcome />} />
-        </Routes>
-      </MainLayout>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
@@ -77,36 +77,36 @@ export default function Footer() {
             </h6>
             <ul className="space-y-2">
               <li>
-                <Link
+                <NavLink
                   to="/welcome"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   Welcome
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/school-profile"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   School Profile
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/news"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   News
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/gallery"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   Gallery
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </motion.div>
@@ -118,44 +118,44 @@ export default function Footer() {
             </h6>
             <ul className="space-y-2">
               <li>
-                <Link
+                <NavLink
                   to="/teacher-data"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   Teacher Data
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/registration"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   New Student Admission
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/about"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   About Us
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/facilities"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   Facilities
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/contact"
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200 hover:translate-x-1 inline-block"
                 >
                   Contact
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </motion.div>
@@ -236,7 +236,6 @@ export default function Footer() {
           <p className="text-gray-400 text-sm">
             © 2025 Vishwa Bharati Shiksha Sadan. All rights reserved.
           </p>
-          <p className="text-gray-500 text-xs mt-1">Hosting by IDCloudHost</p>
         </motion.div>
       </motion.div>
     </footer>

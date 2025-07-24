@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router";
 import { useState } from "react";
 import logoSrc from "../assets/vbss-logo.png";
 // eslint-disable-next-line no-unused-vars
@@ -56,7 +56,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link
+            <NavLink
               to="/"
               onClick={handleLinkClick}
               className="flex items-center gap-2 sm:gap-3"
@@ -72,7 +72,7 @@ export default function Header() {
                 </span>
                 <span className="sm:hidden">VBSS</span>
               </h1>
-            </Link>
+            </NavLink>
           </div>
 
           {/* Desktop Navigation */}
@@ -85,7 +85,7 @@ export default function Header() {
               { to: "/contact", label: "Contact" },
             ].map((link) => (
               <li key={link.to}>
-                <Link
+                <NavLink
                   to={link.to}
                   onClick={handleLinkClick}
                   className={`px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm lg:text-base relative overflow-hidden group ${
@@ -107,7 +107,7 @@ export default function Header() {
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/20 group-hover:to-purple-400/20 rounded-lg transition-all duration-300"></div>
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -174,7 +174,7 @@ export default function Header() {
                     animate="open"
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
+                    <NavLink
                       to={link.to}
                       onClick={handleMobileLinkClick}
                       className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
@@ -184,7 +184,7 @@ export default function Header() {
                       }`}
                     >
                       {link.label}
-                    </Link>
+                    </NavLink>
                   </motion.div>
                 ))}
               </div>
